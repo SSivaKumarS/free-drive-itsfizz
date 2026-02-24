@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import carImg from "../assets/car.jpeg";
+import carImg from "./assets/car.jpeg"; // correct relative path
 
 gsap.registerPlugin(ScrollTrigger);
 
