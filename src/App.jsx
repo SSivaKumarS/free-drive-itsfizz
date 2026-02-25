@@ -1,11 +1,11 @@
 import Hero from "./components/Hero";
+import ScrollCar from "./components/ScrollCar";
 
-function App() {
+export default function App() {
   return (
-    <div className="bg-white">
+    <div>
       <Hero />
+      <ScrollCar />
     </div>
   );
 }
-
-export default App;
