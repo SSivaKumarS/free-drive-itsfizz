@@ -1,13 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>my-react-tailwind</title>
-  </head>
-  <body>
+    <title>Hero Project</title>
+    <!-- Tailwind will be injected via Vite -->
+</head>
+
+<body class="m-0 p-0 font-sans">
     <div id="root"></div>
+
+    <!-- Scripts injected by Vite -->
     <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+    <!-- Optional: background gradient fallback -->
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0f2027, #203a43);
+        }
+    </style>
+</body>
+
 </html>

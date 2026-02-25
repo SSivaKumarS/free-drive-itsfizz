@@ -1,27 +1,49 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
   const headlineRef = useRef(null);
   const statsRef = useRef(null);
 
   useEffect(() => {
-    gsap.fromTo(
+    const tl = gsap.timeline();
+
+    // Headline animation
+    tl.fromTo(
       headlineRef.current,
-      { opacity: 0, y: 40 },
-      { opacity: 1, y: 0, ease: "power3.out", duration: 1.2 }
+      { opacity: 0, y: 60 },
+      { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }
     );
 
-    gsap.fromTo(
+    // Stats animation with stagger
+    tl.fromTo(
       statsRef.current.children,
       { opacity: 0, y: 20 },
       {
         opacity: 1,
         y: 0,
-        ease: "power3.out",
         duration: 1,
         stagger: 0.3,
-        delay: 0.5,
+        ease: "power3.out",
+      },
+      "-=0.8"
+    );
+
+    // Optional ScrollTrigger effect
+    gsap.fromTo(
+      headlineRef.current,
+      { scale: 1 },
+      {
+        scale: 1.05,
+        scrollTrigger: {
+          trigger: headlineRef.current,
+          start: "top center",
+          end: "bottom top",
+          scrub: true,
+        },
       }
     );
   }, []);
@@ -30,27 +52,27 @@ export default function Hero() {
     <section className="hero h-screen flex flex-col justify-center items-center text-center relative">
       <h1
         ref={headlineRef}
-        className="text-6xl md:text-7xl tracking-widest font-bold"
+        className="text-6xl md:text-7xl tracking-[0.6em] font-bold text-white"
       >
         W E L C O M E I T Z F I Z Z
       </h1>
 
       <div
         ref={statsRef}
-        className="mt-10 flex gap-10 text-lg md:text-xl"
+        className="mt-12 flex gap-12 text-lg md:text-xl"
       >
         <div>
-          <h2 className="text-3xl font-bold">98%</h2>
+          <h2 className="text-4xl font-bold text-white">98%</h2>
           <p className="text-gray-400">Customer Satisfaction</p>
         </div>
 
         <div>
-          <h2 className="text-3xl font-bold">120+</h2>
+          <h2 className="text-4xl font-bold text-white">120+</h2>
           <p className="text-gray-400">Projects Delivered</p>
         </div>
 
         <div>
-          <h2 className="text-3xl font-bold">24/7</h2>
+          <h2 className="text-4xl font-bold text-white">24/7</h2>
           <p className="text-gray-400">Support System</p>
         </div>
       </div>
